@@ -3,18 +3,8 @@ import http from "../http-common";
 const API_URL = "/reminders";
 
 class ReminderService {
-  /// It should be possible to have one get function with
-  /// some parameters for all reminders , idea for refactoring.
-  getSnoozedReminders() {
-    return http.get(API_URL + '/snoozed');
-  }
-
-  getInboxReminders() {
-    return http.get(API_URL + '/inbox');
-  }
-
-  getDoneReminders() {
-    return http.get(API_URL + '/done');
+  getAllCategorized(done, snoozed) {
+    return http.get(`${API_URL}/?done=${done}&snoozed=${snoozed}`);
   }
 
   create(data) {
@@ -22,11 +12,11 @@ class ReminderService {
   }
 
   update(id, data) {
-    return http.put(`/reminders/${id}`, data);
+    return http.put(`${API_URL}/${id}`, data);
   }
 
   delete(id) {
-    return http.delete(`/reminders/${id}`);
+    return http.delete(`${API_URL}/${id}`);
   }
 
   deleteAll() { // Token will be important here

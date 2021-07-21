@@ -12,9 +12,6 @@
         <li class="nav-item">
           <router-link to="/done" class="nav-link">Done</router-link>
         </li>
-        <li class="nav-item">
-          <router-link to="/new" class="nav-link">New reminder</router-link>
-        </li>
       </div>
     </nav>
 

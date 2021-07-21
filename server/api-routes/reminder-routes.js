@@ -6,17 +6,17 @@ module.exports = app => {
   // Create a new reminder
   router.post("/", reminders.create);
 
-  // Retrieve all snoozed reminders
-  router.get("/snoozed", reminders.findAllSnoozed);
+  // Retrieve all reminders
+  router.get("/all", reminders.findAll);
 
-  // Retrieve all done reminders
-  router.get("/done", reminders.findAllDone);
+  // Retrieve all categorized reminders
+  router.get("/", reminders.findAllCategorized);
 
-  // Retrieve all inbox reminders
-  router.get("/inbox", reminders.findAllInbox);
+  // Update reminder
+  router.put("/:id", reminders.update);
 
-  // Update a reminder using id
-  //router.put("/:id", reminders.update);
+  // Delete a reminder using id + user token (!!! Important to include token !!!)
+  router.delete("/:id", reminders.delete);
 
   // Delete all reminders (!!! Important to include token !!!)
   //router.delete("/", reminders.deleteAll);
