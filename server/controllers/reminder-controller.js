@@ -51,7 +51,16 @@ exports.findAllCategorized = (req, res) => { // Main method used to display data
   const snoozed = req.query.snoozed;
   const token = req.cookies.token;
 
-  Reminder.findAll({ where: {done: done, snoozed: snoozed, owner: token} })
+  Reminder.findAll({
+    where: {
+      done: done,
+      snoozed: snoozed,
+      owner: token
+    },
+    order: [
+      ['date', 'ASC'] // Show upcoming reminders first
+    ]
+  })
     .then(data => {
       res.send(data);
     })
@@ -63,8 +72,8 @@ exports.findAllCategorized = (req, res) => { // Main method used to display data
     });
 };
 
-exports.update = (req, res) => {
-  const id = req.params.id;
+exports.update = (req, res) => { // The id is sent in the body anyways, probably it's not
+  const id = req.params.id;      // necessary to have a separate property for it
   const token = req.cookies.token;
 
   Reminder.update(req.body, { where: { id: id, owner: token } })
