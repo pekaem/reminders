@@ -9,9 +9,7 @@
   "keywords": [
     "nodejs",
     "express",
-    "postgresql",
-    "rest",
-    "api"
+    "postgresql"
   ],
   "author": "Martin Galajda",
   "license": "ISC",
