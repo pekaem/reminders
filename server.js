@@ -26,30 +26,8 @@ app.set('trust proxy', 1);
   resave: false,
   cookie: {
     maxAge: 3 * 24 * 60 * 60 * 1000 // Session expires after 3 days
-  },
-  store: new pgSession({
-    //conString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB",
-    conObject: {
-      connectionString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB",
-      ssl: true,
-    },
-  })
+  }
 })); */
-
-const corsOptions = {
-  credentials: true,
-  origin: ["http://localhost:8080", "https://mg-reminders.herokuapp.com"]
-}
-
-app.use(cors(corsOptions));
-
-if(process.env.NODE_ENV === "production") {
-  app.use(serveStatic(__dirname + "/dist"));
-
-  /*app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-  });*/
-} else app.use(serveStatic(__dirname + "/dist"));
 
 app.use(cookieParser());
 
@@ -60,6 +38,13 @@ app.get('/api/reminders', (req, res, next) => {
   });
   next();
 });
+
+const corsOptions = {
+  credentials: true,
+  origin: ["http://localhost:8080", "https://mg-reminders.herokuapp.com"]
+}
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
@@ -72,3 +57,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+app.use(serveStatic(__dirname + "/dist"));
