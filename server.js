@@ -31,13 +31,7 @@ app.use(session({
   })
 })); */
 
-var corsOptions = {
-  credentials: true,
-  origin: "http://localhost:8080"
-};
-
 app.use(cors(corsOptions));
-console.log(__dirname);
 app.use(serveStatic(__dirname + "/client/dist"));
 
 app.use(cookieParser());
