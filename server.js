@@ -38,7 +38,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.use(serveStatic(__dirname + "/dist"));
+app.use('/', serveStatic(path.join(__dirname + "/dist")));
 
 app.use(cookieParser());
 
