@@ -37,7 +37,7 @@ const corsOptions = {
   origin: ["http://localhost:8080", "https://mg-reminders.herokuapp.com"]
 }
 
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use('/', serveStatic(path.join(__dirname + "/dist")));
 
 app.use(cookieParser());
