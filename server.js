@@ -45,6 +45,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+app.use(serveStatic(__dirname + "/dist"));
 
 app.use(bodyParser.json());
 
@@ -57,5 +58,3 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-app.use(serveStatic(__dirname + "/dist"));
