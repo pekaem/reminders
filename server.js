@@ -39,6 +39,10 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(serveStatic(__dirname + "/client/dist"));
 
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
+})
+
 app.use(cookieParser());
 
 app.get('/api/reminders', (req, res, next) => {
