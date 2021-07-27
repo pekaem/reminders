@@ -1,6 +1,6 @@
 module.exports = app => {
-  const reminders = require(path.join(__dirname, "./controllers/reminder-controller.js"));
   const path = require('path');
+  const reminders = require(path.join(__dirname, "../controllers/reminder-controller.js"));
 
   var router = require("express").Router();
 
