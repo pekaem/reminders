@@ -11,14 +11,15 @@ const serveStatic = require('serve-static');
 const app = express();
 
 const db = require("./models");
-db.sequelize.sync();
+//db.sequelize.sync();
 
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
 
-/* app.set('trust proxy', 1);
-app.use(session({
+app.set('trust proxy', 1);
+
+/* app.use(session({
   name: "session-id",
   secret: process.env.SESSION_SECRET || "Secret that will be used to sign cookies", //Should be replaced with a key from .env in prod.
   saveUninitialized: true,
@@ -31,7 +32,7 @@ app.use(session({
   })
 })); */
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(serveStatic(__dirname + "/client/dist"));
 
 app.use(cookieParser());
