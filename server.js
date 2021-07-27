@@ -42,7 +42,14 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.use(serveStatic(__dirname + "/dist"));
+
+if(process.env.NODE_ENV === "production") {
+  app.use(serveStatic(__dirname + "/dist"));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  });
+}
 
 app.use(cookieParser());
 
