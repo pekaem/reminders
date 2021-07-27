@@ -30,7 +30,7 @@ app.set('trust proxy', 1);
   store: new pgSession({
     conString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB"
   })
-})); */
+})); */ 
 
 const corsOptions = {
   credentials: true,
