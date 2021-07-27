@@ -19,7 +19,7 @@ db.sequelize.sync();
 
 app.set('trust proxy', 1);
 
-/*app.use(session({
+app.use(session({
   name: "session-id",
   secret: process.env.SESSION_SECRET || "Secret that will be used to sign cookies", //Should be replaced with a key from .env in prod.
   saveUninitialized: true,
@@ -27,7 +27,7 @@ app.set('trust proxy', 1);
   cookie: {
     maxAge: 3 * 24 * 60 * 60 * 1000 // Session expires after 3 days
   }
-})); */
+}));
 
 app.use(cookieParser());
 
@@ -54,7 +54,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 require("./api-routes/reminder-routes.js")(app);
 
 // set port, listen for requests
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
