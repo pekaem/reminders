@@ -49,7 +49,7 @@ if(process.env.NODE_ENV === "production") {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
   });
-}
+} else app.use(serveStatic(__dirname + "/dist"));
 
 app.use(cookieParser());
 
