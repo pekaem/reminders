@@ -48,9 +48,6 @@ app.use(cors(corsOptions));
 
 if(process.env.NODE_ENV === "production") {
   app.use(serveStatic(__dirname + "/dist"));
-  app.get("*", (req, res) => {
-    res.redirect("https://mg-reminders.herokuapp.com/");
-  });
 }
 
 app.use(bodyParser.json());
