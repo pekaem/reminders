@@ -49,7 +49,7 @@ app.use(cors(corsOptions));
 if(process.env.NODE_ENV === "production") {
   app.use(serveStatic(__dirname + "/dist"));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
   });
 }
 
