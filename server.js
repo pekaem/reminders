@@ -43,13 +43,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-if(process.env.NODE_ENV === "production") {
-  app.use(serveStatic(__dirname + "/dist"));
-
-  /*app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-  });*/
-} else app.use(serveStatic(__dirname + "/dist"));
+app.use(serveStatic(__dirname + "/dist"));
 
 app.use(cookieParser());
 
