@@ -31,7 +31,7 @@ app.use(session({
 
 app.use(cookieParser());
 
-app.get('/api/reminders', (req, res, next) => {
+app.use(function (req, res, next) {
   res.cookie('token', req.sessionID, {
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000 ), // 30 days till expiry
     httpOnly: false,
@@ -42,10 +42,13 @@ app.get('/api/reminders', (req, res, next) => {
 const corsOptions = {
   credentials: true,
   origin: ["http://localhost:8080", "https://mg-reminders.herokuapp.com"]
-}
+};
 
 app.use(cors(corsOptions));
-app.use(serveStatic(__dirname + "/dist"));
+
+if(process.env.NODE_ENV === "production") {
+  app.use(serveStatic(__dirname + "/dist"));
+}
 
 app.use(bodyParser.json());
 
