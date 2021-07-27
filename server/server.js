@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const session = require('express-session');
@@ -8,10 +9,11 @@ const pgSession = require('connect-pg-simple')(session);
 const app = express();
 
 const db = require("./models");
-//db.sequelize.sync();
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync();
+
+/* db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
-});
+}); */
 
 app.set('trust proxy', 1);
 app.use(session({
@@ -23,7 +25,7 @@ app.use(session({
     maxAge: 3 * 24 * 60 * 60 * 1000 // Session expires after 3 days
   },
   store: new pgSession({
-    conString: "postgres://postgres:123@localhost:5432/RemindersDB"
+    conString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB"
   })
 }));
 
