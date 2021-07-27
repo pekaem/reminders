@@ -19,7 +19,7 @@ db.sequelize.sync();
 
 app.set('trust proxy', 1);
 
-app.use(session({
+/*app.use(session({
   name: "session-id",
   secret: process.env.SESSION_SECRET || "Secret that will be used to sign cookies", //Should be replaced with a key from .env in prod.
   saveUninitialized: true,
@@ -28,16 +28,20 @@ app.use(session({
     maxAge: 3 * 24 * 60 * 60 * 1000 // Session expires after 3 days
   },
   store: new pgSession({
-    conString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB"
+    //conString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB",
+    conObject: {
+      connectionString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB",
+      ssl: true,
+    },
   })
-}));
+})); */
 
 const corsOptions = {
   credentials: true,
   origin: ["http://localhost:8080", "https://mg-reminders.herokuapp.com"]
 }
 
-//app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(serveStatic(__dirname + "/dist"));
 
 app.use(cookieParser());

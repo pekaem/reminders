@@ -3,7 +3,7 @@ import axios from "axios";
 // "http://localhost:3000/api"
 export default axios.create({
   withCredentials: true,
-  baseURL: "https://mg-reminders.herokuapp.com/api",
+  baseURL: "http://localhost:3000/api",
   headers: {
     "Content-type": "application/json"
   }
