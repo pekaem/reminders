@@ -11,11 +11,11 @@ const serveStatic = require('serve-static');
 const app = express();
 
 const db = require("./models");
-//db.sequelize.sync();
+db.sequelize.sync();
 
-db.sequelize.sync({ force: true }).then(() => {
+/* db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
-});
+}); */
 
 app.set('trust proxy', 1);
 
