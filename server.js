@@ -19,7 +19,7 @@ db.sequelize.sync();
 
 app.set('trust proxy', 1);
 
-/* app.use(session({
+app.use(session({
   name: "session-id",
   secret: process.env.SESSION_SECRET || "Secret that will be used to sign cookies", //Should be replaced with a key from .env in prod.
   saveUninitialized: true,
@@ -30,7 +30,7 @@ app.set('trust proxy', 1);
   store: new pgSession({
     conString: process.env.DATABASE_URL || "postgres://postgres:123@localhost:5432/RemindersDB"
   })
-})); */ 
+}));
 
 const corsOptions = {
   credentials: true,
