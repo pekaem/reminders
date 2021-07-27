@@ -33,7 +33,7 @@ app.use(cookieParser());
 
 app.get('/api/reminders', (req, res, next) => {
   res.cookie('token', req.sessionID, {
-    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000 ), // 30 days till expiry, could be updated after every visit (not important for the purpose of this project)
+    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000 ), // 30 days till expiry
     httpOnly: false,
   });
   next();
