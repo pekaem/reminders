@@ -32,7 +32,12 @@ app.set('trust proxy', 1);
   })
 })); */
 
-app.use(cors());
+const corsOptions = {
+  credentials: true,
+  origin: ["http://localhost:8080", "https://mg-reminders.herokuapp.com"]
+}
+
+app.use(cors(corsOptions));
 app.use(serveStatic(__dirname + "/dist"));
 
 app.use(cookieParser());
