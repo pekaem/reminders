@@ -33,7 +33,7 @@ app.set('trust proxy', 1);
 })); */
 
 app.use(cors());
-app.use(serveStatic(__dirname + "/client/dist"));
+app.use(serveStatic(__dirname + "/dist"));
 
 app.use(cookieParser());
 
