@@ -38,7 +38,12 @@ app.use(function (req, res, next) {
       expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000 ), // 30 days till expiry
       httpOnly: false,
     });
-  } else 
+  } else {
+    res.cookie('token', cookie, {
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000 ), // Extend by 30 days
+      httpOnly: false,
+    });
+  }
   next();
 });
 
