@@ -32,10 +32,13 @@ app.use(session({
 app.use(cookieParser());
 
 app.use(function (req, res, next) {
-  res.cookie('token', req.sessionID, {
-    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000 ), // 30 days till expiry
-    httpOnly: false,
-  });
+  cookie = req.cookies.token;
+  if(cookie === undefined) {
+    res.cookie('token', req.sessionID, {
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000 ), // 30 days till expiry
+      httpOnly: false,
+    });
+  } else 
   next();
 });
 
@@ -49,9 +52,6 @@ console.log(__dirname);
 
 if(process.env.NODE_ENV === "production") {
   app.use(serveStatic(__dirname + "/dist"));
-  app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/dist/index.html');
-  });
 }
 
 app.use(bodyParser.json());
