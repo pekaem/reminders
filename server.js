@@ -49,6 +49,9 @@ console.log(__dirname);
 
 if(process.env.NODE_ENV === "production") {
   app.use(serveStatic(__dirname + "/dist"));
+  app.get('*', (req, res) => {
+    app.use(serveStatic(__dirname + "/dist"));
+  });
 }
 
 app.use(bodyParser.json());
