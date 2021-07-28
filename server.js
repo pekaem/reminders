@@ -48,17 +48,19 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-console.log(__dirname);
-
-if(process.env.NODE_ENV === "production") {
-  app.use(serveStatic(__dirname + "/dist"));
-}
 
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./api-routes/reminder-routes.js")(app);
+
+if(process.env.NODE_ENV === "production") {
+  app.use(serveStatic(__dirname + "/dist"));
+  app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+}
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
