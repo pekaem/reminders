@@ -57,8 +57,8 @@ require("./api-routes/reminder-routes.js")(app);
 
 if(process.env.NODE_ENV === "production") {
   app.use(serveStatic(__dirname + "/dist"));
-  app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  app.get('/*', function (req, res) { // Webpack workaround for Heroku to redirect to home page on refresh
+    res.sendFile(path.join(__dirname, 'dist', 'index.html')); // Probably wouldn't be an issue with split FE/BE
   });
 }
 
