@@ -61,10 +61,9 @@ export default {
 
       if(this.descriptionState && this.date) {
         reminderService.create(data)
-          .then(response => {
+          .then(() => {
             this.refreshList();
             this.setSuccessCountdown(5); // Success alert will be shown for 5 seconds
-            console.log(response.data);
           })
           .catch(e => {
             console.log(e);
