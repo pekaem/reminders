@@ -48,14 +48,8 @@ export default {
   methods: {
     deleteReminder() {
       reminderService.delete(this.id)
-<<<<<<< HEAD
-        .then(response => {
-          this.refreshList();
-          console.log(response.data);
-=======
         .then(() => {
           this.refreshList();
->>>>>>> a310feb6dcd022b9b6b67eca7c47ee45a1b2414f
         })
         .catch(e => {
           console.log(e);
@@ -63,12 +57,7 @@ export default {
     },
     updateReminder() { // It could probably be done in a way where we would GET only the updated reminder and not the whole list again
       reminderService.update(this.id, this.reminderData)
-<<<<<<< HEAD
-        .then(response => {
-          console.log(response.data);
-=======
         .then(() => {
->>>>>>> a310feb6dcd022b9b6b67eca7c47ee45a1b2414f
           this.refreshList();
         })
         .catch(e => {

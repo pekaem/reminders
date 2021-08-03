@@ -14,14 +14,6 @@ export default {
     RemindersList,
     AddNewReminder
   },
-<<<<<<< HEAD
-  data() {
-    return {
-      
-    } 
-  },
-=======
->>>>>>> a310feb6dcd022b9b6b67eca7c47ee45a1b2414f
   methods: {
     refreshList() {
       this.$refs.remindersList.retrieveReminders(); // Note for myself: Vuex is always useful
