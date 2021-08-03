@@ -38,6 +38,9 @@ export default {
       reminderService.getAllCategorized(this.done, this.snoozed)
         .then(response => {
           this.remindersList = response.data;
+        })
+        .catch(e => {
+          console.log(e);
         });
     }
   },
