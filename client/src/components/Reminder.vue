@@ -50,18 +50,12 @@ export default {
       reminderService.delete(this.id)
         .then(() => {
           this.refreshList();
-        })
-        .catch(e => {
-          console.log(e);
         });
     },
     updateReminder() { // It could probably be done in a way where we would GET only the updated reminder and not the whole list again
       reminderService.update(this.id, this.reminderData)
         .then(() => {
           this.refreshList();
-        })
-        .catch(e => {
-          console.log(e);
         });
     },
     snoozeReminder() {

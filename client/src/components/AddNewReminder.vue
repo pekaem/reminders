@@ -64,9 +64,6 @@ export default {
           .then(() => {
             this.refreshList();
             this.setSuccessCountdown(5); // Success alert will be shown for 5 seconds
-          })
-          .catch(e => {
-            console.log(e);
           });
         this.submitted = true;
         this.description = "";
