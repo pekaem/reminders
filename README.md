@@ -1,5 +1,10 @@
 # reminders-app
 
+## Heroku link
+```
+https://mg-reminders.herokuapp.com/
+```
+
 ## Project setup
 ```
 npm install
