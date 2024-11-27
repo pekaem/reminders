@@ -49,7 +49,7 @@ app.use(function (req, res, next) {
 
 const corsOptions = {
   credentials: true,
-  origin: ["http://localhost:8080", "https://mg-reminders.herokuapp.com"]
+  origin: ["http://localhost:8080"]
 };
 
 app.use(cors(corsOptions));

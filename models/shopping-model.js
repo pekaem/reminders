@@ -1,11 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("user", {
-    token: {
+  const Shopping = sequelize.define("shopping", {
+    items: {
       allowNull: false,
-      primaryKey: true,
       type: Sequelize.STRING
     },
-    nickname: {
+    owner: {
       allowNull: false,
       type: Sequelize.STRING
     },
@@ -18,8 +17,12 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       defaultValue: new Date(),
       type: Sequelize.DATE
+    },
+    updatedBy: {
+      allowNull: false,
+      type: sequelize.STRING
     }
   });
 
-  return User;
+  return Shopping;
 };

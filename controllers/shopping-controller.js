@@ -1,15 +1,15 @@
 const db = require("../models");
-const Reminder = db.reminders;
+const Shopping = db.shopping;
 
 exports.create = (req, res) => {
   if(!req.body.description){
     res.status(400).send({
-      message: "Reminder description can not be empty!"
+      message: "Shopping list can not be empty!"
     });
     return;
   }
 
-  const reminder = {
+  const shoppingList = {
     date: req.body.date,
     description: req.body.description,
     done: false,
@@ -17,29 +17,29 @@ exports.create = (req, res) => {
     owner: req.cookies.token
   };
 
-  Reminder.create(reminder)
+  Shopping.create(shoppingList)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating reminders."
+          err.message || "Some error occurred while creating Shopping list."
       });
     });
 };
 
 exports.findAll = (req, res) => { // This function is not exposed to the frontend,
-  const token = req.cookies.token; // but is still available server-side, if someone wanted all of their reminders.
+  const token = req.cookies.token; // but is still available server-side, if someone wanted all of their shopping lists.
 
-  Reminder.findAll({ where: { owner: token } })
+  Shopping.findAll({ where: { owner: token } })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving reminders."
+          err.message || "Some error occurred while retrieving Shopping lists."
       });
     });
 };
@@ -49,7 +49,7 @@ exports.findAllCategorized = (req, res) => { // Main method used to display data
   const snoozed = req.query.snoozed;
   const token = req.cookies.token;
 
-  Reminder.findAll({
+  Shopping.findAll({
     where: {
       done: done,
       snoozed: snoozed,
@@ -65,7 +65,7 @@ exports.findAllCategorized = (req, res) => { // Main method used to display data
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving reminders."
+          err.message || "Some error occurred while retrieving Shopping lists."
       });
     });
 };
@@ -74,21 +74,21 @@ exports.update = (req, res) => { // The id is sent in the body anyways, probably
   const id = req.params.id;      // necessary to have a separate property for it
   const token = req.cookies.token;
 
-  Reminder.update(req.body, { where: { id: id, owner: token } })
+  Shopping.update(req.body, { where: { id: id, owner: token } })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Reminder was updated."
+          message: "Shopping list was updated."
         });
       } else {
         res.send({
-          message: `Could not update reminder with id: ${id}. Maybe it doesn't exist.`
+          message: `Could not update Shopping list with id: ${id}. Maybe it doesn't exist.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating reminder with id=" + id
+        message: "Error updating Shopping list with id=" + id
       });
     });
 };
@@ -105,22 +105,22 @@ exports.delete = (req, res) => {
   const id = req.params.id;
   const token = req.cookies.token;
 
-  Reminder.destroy({ where: { id: id, owner: token } })
+  Shopping.destroy({ where: { id: id, owner: token } })
     .then(num => {
       if (num === 1){
         res.send({
-          message: 'Reminder was successfully deleted!'
+          message: 'Shopping list was successfully deleted!'
         });
       } else {
         res.send({
-          message: `Could not delete reminder with id: ${id}. Maybe it doesn't exist.`
+          message: `Could not delete Shopping list with id: ${id}. Maybe it doesn't exist.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || `Some error occurred while deleting reminder with id: ${id}`
+          err.message || `Some error occurred while deleting Shopping list with id: ${id}`
       });
     });
 };

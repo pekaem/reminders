@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import reminderService from '../services/reminder-service';
+import reminderService from '../../services/reminder-service';
 import EditableText from './EditableText.vue';
 import EditableDate from './EditableDate.vue';
 
@@ -79,8 +79,8 @@ export default {
       this.reminderData.done = false;
       this.updateReminder();
     },
-    editDescription(text) { // This function could probably be merged with editDate,
-      if(text) {            // but I feel it's more tranparent/readable this way
+    editDescription(text) {
+      if(text) {
         this.reminderData.description = text;
         this.updateReminder();
         return;
@@ -118,5 +118,8 @@ export default {
   .buttons-column {
     width: 22%;
     margin: auto;
+  }
+  .btn {
+    margin-right: 3px;
   }
 </style>

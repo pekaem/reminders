@@ -22,5 +22,5 @@ module.exports = app => {
   // Delete all reminders (!!! Important to include token !!!)
   //router.delete("/", reminders.deleteAll);
 
-  app.use('/api/reminders', router);
+  app.use('/reminders', router);
 };

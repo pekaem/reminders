@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     refreshList() {
-      this.$refs.remindersList.retrieveReminders(); // Note for myself: Vuex is always useful
+      this.$refs.remindersList.retrieveReminders();
     }
   }
 }

@@ -18,4 +18,4 @@ new Vue({
   render: h => h(App),
 }).$mount('#app');
 
-router.replace('/inbox'); // Initial route, inbox can as well be our home page.
+router.replace('/shopping'); // Initial route, inbox can as well be our home page.

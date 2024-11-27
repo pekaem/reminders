@@ -9,17 +9,22 @@ export default new Router({
     {
       path: "/snoozed",
       name: "snoozed",
-      component: () => import("./components/Snoozed.vue")
+      component: () => import("./components/reminders/Snoozed.vue")
     },
     {
       path: "/inbox",
       name: "inbox",
-      component: () => import("./components/Inbox.vue")
+      component: () => import("./components/reminders/Inbox.vue")
     },
     {
       path: "/done",
       name: "done",
-      component: () => import("./components/Done.vue")
+      component: () => import("./components/reminders/Done.vue")
+    },
+    {
+      path: "/shopping",
+      name: "shopping",
+      component: () => import("./components/shopping/Shopping.vue")
     }
   ]
 });

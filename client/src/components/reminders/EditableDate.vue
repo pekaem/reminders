@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import dateUtil from '../../../util/date-util';
+import dateUtil from '../../../../util/date-util';
 
 export default {
   data() {

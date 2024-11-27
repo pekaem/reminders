@@ -19,7 +19,7 @@
 
 <script>
 import Reminder from './Reminder.vue';
-import reminderService from '../services/reminder-service.js';
+import reminderService from '../../services/reminder-service.js';
 
 export default {
   components: { Reminder },

@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import reminderService from '../services/reminder-service.js';
-import dateUtil from '../../../util/date-util';
+import reminderService from '../../services/reminder-service.js';
+import dateUtil from '../../../../util/date-util';
 
 export default {
   data() {
